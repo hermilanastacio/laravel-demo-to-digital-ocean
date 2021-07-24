@@ -14,9 +14,12 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-        $image_name = str_replace('public/', '', $request->image->store('public'));
-
-        $request['image_url'] = 'https://dev.hermilanastacio.info/storage/images/'.$image_name.'';
+        if(!empty($request->image)) {
+            $image_name = str_replace('public/', '', $request->image->store('public'));
+            $request['image_url'] = 'https://dev.hermilanastacio.info/storage/images/'.$image_name.'';
+        } else {
+            $request['image_url'] = '';
+        }
 
         return Post::create($request->all());
     }
