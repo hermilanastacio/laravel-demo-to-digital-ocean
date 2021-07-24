@@ -19,21 +19,20 @@ class PostController extends Controller
 
     public function show($id)
     {
-        //
-    }
-
-    public function edit($id)
-    {
-        //
+        return Post::find($id);
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::find($id);
+
+        $post->update($request->all());
+
+        return $post;
     }
 
     public function destroy($id)
     {
-        //
+        Post::destroy($id);
     }
 }
