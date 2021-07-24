@@ -15,7 +15,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         if(!empty($request->image)) {
-            $image_name = str_replace('public/', '', $request->image->store('public'));
+            $image_name = str_replace('public/', '', $request->image->store('public/images'));
             $request['image_url'] = 'https://dev.hermilanastacio.info/storage/images/'.$image_name.'';
         } else {
             $request['image_url'] = '';
