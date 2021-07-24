@@ -16,12 +16,14 @@ class PostController extends Controller
     {
         if(!empty($request->image)) {
             $image_name = str_replace('public/', '', $request->image->store('public/images'));
-            $request['image_url'] = 'https://dev.hermilanastacio.info/storage/images/'.$image_name.'';
+            $request['image_url'] = 'https://dev.hermilanastacio.info/storage/'.$image_name.'';
+
+        return $request;
+
         } else {
             $request['image_url'] = '';
         }
 
-        return Post::create($request->all());
     }
 
     public function show($id)
